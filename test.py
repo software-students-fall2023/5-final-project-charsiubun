@@ -140,7 +140,8 @@ def get_github_user_details(username, github_token):
 
 
 # Replace with your GitHub token
-GITHUB_TOKEN = "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"
+
+GITHUB_TOKEN = "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"
 
 # Replace with a GitHub username to test
 #TEST_USERNAME = "PatrickZhao0"
