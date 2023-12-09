@@ -140,7 +140,7 @@ def get_github_user_details(username, github_token):
 
 
 # Replace with your GitHub token
-GITHUB_TOKEN = "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"
+GITHUB_TOKEN = "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"
 
 # Replace with a GitHub username to test
 #TEST_USERNAME = "PatrickZhao0"
@@ -177,7 +177,7 @@ def calculate_rating(data):
     # Add more metrics extraction as per your data structure
 
     # Adjusted weights for new metrics
-    W1, W2, W3, W4, W5, W6 = 0.1, 0.8, 0.5, 0.3, 0.1, 0.1  # New weights for additional metrics
+    W1, W2, W3, W4, W5, W6 = 0.3, 1.5, 0.3, 0.3, 0.1, 0.1  # New weights for additional metrics
 
     # Calculate raw rating with new metrics
     raw_rating = (W1 * len(languages)) + (W2 * total_contributions) + (W3 * total_pr_activities) 
@@ -210,3 +210,4 @@ for n in u_names:
     user_details = get_github_user_details(n, GITHUB_TOKEN)
     rating = calculate_rating(user_details)
     print(f"GitHub User Rating: {rating}")
+
