@@ -140,7 +140,7 @@ def get_github_user_details(username, github_token):
 
 
 # Replace with your GitHub token
-GITHUB_TOKEN = "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"
+GITHUB_TOKEN = "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"
 
 # Replace with a GitHub username to test
 #TEST_USERNAME = "PatrickZhao0"
@@ -148,10 +148,6 @@ TEST_USERNAME = "BREADLuVER"
 #TEST_USERNAME = "Spectraorder"
 #BREADLuVER
 #Spectraorder
-
-user_details = get_github_user_details(TEST_USERNAME, GITHUB_TOKEN)
-
-print(user_details)
 
 def calculate_rating(data):
     # Extract distinct languages
@@ -165,16 +161,52 @@ def calculate_rating(data):
     total_repo_count = len(data['Contributed Repos']) + data['Public Repos']
 
     # Pull request activities
-    total_pr_activities = data['Year Contributions']['totalPullRequestContributions'] + data['Year Contributions']['totalPullRequestReviewContributions']
+    total_pr_activities = data['Year Contributions']['totalPullRequestReviewContributions'] 
+    + data['Year Contributions']['totalIssueContributions']
 
-    # Assign weights (example weights, can be adjusted)
-    W1, W2, W3, W4 = 0.1, 1, 0.5, 0.3
+    total_contributions = data['Year Contributions']['totalPullRequestContributions'] + data['Year Contributions']['totalCommitContributions']
 
-    # Calculate rating
-    rating = (W1 * len(languages)) + (W2 * data['Year Contributions']['totalCommitContributions']) 
-    + (W3 * total_pr_activities) + (W4 * total_repo_count)
+    print(f"lan: {len(languages)}")
+    print(f"repo count: {total_repo_count}")
+    print(f"pr: {total_pr_activities}")
+    print(f"contribute: {total_contributions}")
 
-    return rating
+    total_stars = sum([repo.get('Stars', 0) for repo in data['Recent Repositories']])
+    total_forks = sum([repo.get('Forks', 0) for repo in data['Recent Repositories']])
+    total_gists = data.get('Total Gists', 0)  # Assuming you have this metric
+    # Add more metrics extraction as per your data structure
 
-rating = calculate_rating(user_details)
-print(f"GitHub User Rating: {rating}")
+    # Adjusted weights for new metrics
+    W1, W2, W3, W4, W5, W6 = 0.1, 0.8, 0.5, 0.3, 0.1, 0.1  # New weights for additional metrics
+
+    # Calculate raw rating with new metrics
+    raw_rating = (W1 * len(languages)) + (W2 * total_contributions) + (W3 * total_pr_activities) 
+    + (W4 * total_repo_count) + (W5 * total_stars) + (W6 * total_forks)
+    # Add calculations for other new metrics
+
+    # Adjusted maximum values for normalization
+    max_languages = 15
+    max_commit_contributions = 500
+    max_pr_activities = 200
+    max_repo_count = 30
+    max_stars = 100  # Example maximum
+    max_forks = 100  # Example maximum
+    # Add max values for other new metrics
+
+    # Calculate maximum possible rating
+    max_rating = (W1 * max_languages) + (W2 * max_commit_contributions) + (W3 * max_pr_activities) 
+    + (W4 * max_repo_count) + (W5 * max_stars) + (W6 * max_forks)
+
+    # Normalize the rating to a 0-100 scale
+    normalized_rating = (raw_rating / max_rating) * 100
+
+    return normalized_rating
+
+#TEST_USERNAME = "PatrickZhao0"
+#TEST_USERNAME = "BREADLuVER"
+#TEST_USERNAME = "Spectraorder"
+u_names = ["PatrickZhao0", "BREADLuVER", "Spectraorder"]
+for n in u_names: 
+    user_details = get_github_user_details(n, GITHUB_TOKEN)
+    rating = calculate_rating(user_details)
+    print(f"GitHub User Rating: {rating}")
