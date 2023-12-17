@@ -2,6 +2,14 @@ import requests
 from datetime import datetime, timezone, timedelta
 import random
 
+import os
+import mongomock
+from flask import Flask, render_template, request, redirect, url_for
+from pymongo.mongo_client import MongoClient
+
+
+app = Flask(__name__)
+
 def get_github_user_year_contributions(username, github_token):
     # Define the GraphQL query
     graphql_query = """
