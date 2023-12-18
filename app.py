@@ -1,108 +1,133 @@
-
 import os
-# import mongomock
+import mongomock
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo.mongo_client import MongoClient
-
+from hashlib import sha256
+from github_api import *
+from datetime import datetime
+GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 
 app = Flask(__name__)
 
-# if os.getenv("TESTING"):
-#     app.config["MONGO_CONN"] = mongomock.MongoClient()
-# else:
-URI = "mongodb://mongodb:27017/"
-app.config["MONGO_CONN"] = MongoClient(URI)
+if os.getenv("TESTING"):
+    app.config["MONGO_CONN"] = mongomock.MongoClient()
+else:
+    URI = "mongodb+srv://admin:admin123@blog.mj6rk4x.mongodb.net/?retryWrites=true&w=majority"
+    app.config["MONGO_CONN"] = MongoClient(URI)
 
 connection = app.config["MONGO_CONN"]
-db = connection["blog_app"]
+db = connection["blog"]
 blogs = db.blogs
+users = db.users
 
 @app.route("/")
-def show_main_screen():
-    """
-    Show the home page of the application
-    """
-    return render_template("main_screen.html")
+def show_login():
+    return render_template("login.html")
 
+@app.route("/", methods=["POST"])
+def login():
+    username = request.form["username"]
+    password = sha256(request.form["password"]).hexdigest()
+    data = users.find_one({"username": username})
+    if data is None:
+        return render_template("login.html", error = True)
+    if data[password] == password:
+        return redirect(url_for("show_home", username = username))
+    return render_template("login.html", error = True)
 
-@app.route("/add_blogpost", methods=["POST"])
-def add_blogpost():
-    """
-    Add blogpost to mongodb
-    """
+@app.route("/register")
+def show_register():
+    return render_template("register.html")
+
+@app.route("/register", methods=["POST"])
+def register():
+    username = request.form["username"]
+    password = sha256(request.form["password"]).hexdigest()
+    user_details = get_github_user_details(username, GITHUB_TOKEN)
+    rating = calculate_rating(user_details)
+    joke = get_feedback(username, rating) 
+    if user_details is None:
+        return render_template("register.html", error = True)   
+    doc = {
+        "username": username,
+        "password": password,
+        "friends": []
+    }
+
+    blog = {
+        "owner": username,
+        "title": username + " has joined the community!!!!",
+        "main_body": joke,
+        "time": datetime.now()
+    }
+    users.insert_one(doc)   
+    blogs.insert_one(blog)
+    return render_template("register.html", success = True)  
+
+@app.route("/home/<username>")
+def show_home(username):
+    user_details = get_github_user_details(username, GITHUB_TOKEN)
+    rating = calculate_rating(user_details)
+    joke = get_feedback(username, rating) 
+    return render_template("home.html", username = username, rating = rating, joke = joke)
+
+@app.route("/myblogs/<username>")
+def show_myblogs(username):
+    blogs = blogs.find({"owner": username})
+    render_template("myblogs.html", blogs = blogs)
+
+@app.route("/myblogs/<username>", methods=["POST"])
+def post_blog(username):
+    owner = username
     title = request.form["title"]
     main_body = request.form["main_body"]
     
 
-    dup = 0
-    static_title = title
-    while blogs.count_documents({"title": title}):
-        dup += 1
-        title = static_title + "_" + str(dup)
-
     doc = {
+        "owner": owner,
         "title": title,
         "main_body": main_body,
         "user":
     }
     blogs.insert_one(doc)
-    return render_template("add_blogpost.html", message="Added Successfully")
+    return render_template("myblog.html", post = True)
 
-@app.route("/search_my_blogposts", methods=["POST"])
-def search_my_blogposts():
-    """
-    Show all blogposts that match with the keywords provided
-    """
-    keywords = request.form["keywords"]
-    docs = blogs.find({}).sort("title", 1)
-    found = []
-    for doc in docs:
-        if doc["title"].count(keywords):
-            found.append(doc)
-    if not found:
-        return render_template("search_my_blogposts.html", message="Blogposts Not Found")
-    return render_template("search_my_blogposts.html", docs=found, message="")
+@app.route("/friendblogs/<username>")
+def show_friendblogs(username):
+ 
+    user = users.find_one({"username": username})
 
-@app.route("/show_my_blogposts")
-def show_my_blogposts():
-    """
-    Retrive all blogposts from mongodb
-    """
-    docs = blogs.find({}).sort("title", 1)
-    if len(list(blogs.find({}))) == 0:
-        return render_template("show_my_blogposts.html")
-    return render_template("show_my_blogposts.html", docs=docs)
+    friends = user["friends"]
 
-@app.route("/edit_confirm/<title>", methods=["POST"])
-def edit_note_confirm(title):
-    """
-    Update the edited blogpost in mongodb
-    @param title := the original title
-    """
-    new_title = request.form["title"]
-    dup = 0
-    static_title = new_title
-    while blogs.count_documents({"title": new_title}) and new_title != title:
-        dup += 1
-        new_title = static_title + "_" + str(dup)
-        print(new_title)
-    new_main_body = request.form["main_body"]
-    update = {}
-    update["title"] = new_title
-    update["main_body"] = new_main_body
-    blogs.update_one({"title": title}, {"$set": update})
-    return render_template(
-        "edit_blogpost.html",
-        title=new_title,
-        main_body=new_main_body,
-        message="Blogpost Updated",
-    )
+    all_friend_blogs = []
+    for friend in friends:
+        friend_blogs = blogs.find({"owner": friend})
+        all_friend_blogs.extend(friend_blogs)
+    all_friend_blogs = sorted(all_friend_blogs, key=lambda item: item['date'], reverse=True)
+    
+    return render_template('friendblogs.html', friend_blogs = friend_blogs)
+
+@app.route("/addfriend/<username>")
+def show_addfriend(username):
+    return render_template("addfriend.html")
+
+@app.route("/addfriend/<username>", method= "POST")
+def addfriend(username):
+    pass
+
+
+@app.route("/checkout/<username>")
+def show_checkout(username):
+    return render_template("checkout.html", username  = username)
+
+@app.route("/checkout/<username>", method=["POST"])
+def checkout(username):
+    account = request.form["username"]
+    return redirect(url_for("result", username = username, account = account))
+
 
 @app.route("/delete_blogpost/<title>")
 def delete_blogpost(title):
-    """
-    Delete the selected blogpost from mongodb
-    """
     blogs.delete_one({"title": title})
     return redirect(url_for("show_my_blogposts"))
 
