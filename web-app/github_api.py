@@ -1,6 +1,7 @@
 import requests
 from datetime import datetime, timezone, timedelta
 import random
+import os
 
 def get_github_user_year_contributions(username, github_token):
     # Define the GraphQL query
@@ -141,7 +142,7 @@ def get_github_user_details(username, github_token):
 
 
 # Replace with your GitHub token
-GITHUB_TOKEN = "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"
+GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 
 def calculate_rating(data):
     # Extract distinct languages
