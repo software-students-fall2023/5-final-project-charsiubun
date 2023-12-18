@@ -16,22 +16,29 @@
                 <!-- Welcome Message -->
                 <h2 class="text-center mb-4">Welcome to your Blog!</h2>
 
-                <!-- ID Input -->
-                <div class="mb-3">
-                    <label for="id" class="form-label">ID:</label>
-                    <input type="text" id="id" name="id" class="form-control"/>
-                </div>
+                <!-- Login Form -->
+                <form action="/" method="post">
+                    <!-- ID Input -->
+                    <div class="mb-3">
+                        <label for="id" class="form-label">Username:</label>
+                        <input type="text"  name="username" class="form-control"/>
+                    </div>
 
-                <!-- Passcode Input -->
-                <div class="mb-3">
-                    <label for="passcode" class="form-label">Passcode:</label>
-                    <input type="password" id="passcode" name="passcode"
-                           class="form-control"/>
-                </div>
+                    <!-- Passcode Input -->
+                    <div class="mb-3">
+                        <label for="passcode" class="form-label">Passcode:</label>
+                        <input type="password" id="passcode" name="passcode" class="form-control"/>
+                    </div>
 
-                <!-- Enter Button -->
-                <a type='submit' name='submit' class='btn btn-primary mb-2' >Login</a>
-                <a type='submit' name='submit' class='btn btn-danger mb-2' >Register</a>
+                    <!-- Error Message -->
+                    {% if error %}
+                        <p class="text-danger">{{ error }}</p>
+                    {% endif %}
+
+                    <!-- Submit Buttons -->
+                    <button type="submit" name="submit" value="login" class="btn btn-primary mb-2">Login</button>
+                    <a href="/register" class="btn btn-danger mb-2">Register</a>
+                </form>
             </div>
         </div>
     </div>
@@ -41,4 +48,3 @@
 <script src="/static/bootstrap.min.js"></script>
 </body>
 </html>
-

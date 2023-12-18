@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Register</h2>
+    <form action="/register" method="post">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <span class="error">Github username not existed/already registered</span><br>
+        <span class="success">You have successfully registered. <a href="/login">Return to login page</a></span><br><br>
+        <input type="submit" value="Register">
+    </form>
+    <br>
+    <a href="/login">Return to login page</a>
+</body>
+</html>
