@@ -19,11 +19,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pipenv
-        pipenv install
+        pipenv install --dev
         
     - name: Run a script that needs the GitHub Token
       run: |
-        cd web-app
-        python github_api.py
+        pipenv run python web-app/github_api.py
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
