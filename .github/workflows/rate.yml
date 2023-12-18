@@ -11,6 +11,8 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Run a script that needs the GitHub Token
-      run: python github_api.py
+      run: |
+        cd web-app
+        python github_api.py
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
