@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friend Blog</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <!-- Header section -->
+    <div class="row py-3">
+        <div class="col-6">
+            <button class="btn btn-secondary"  onclick="goBackClick()">
+                &lt;
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h2>Friend's Blog</h2>
+            <!-- Blog items section -->
+            <div class="list-group">
+                <!-- Blog 1 -->
+                <a href="#" class="list-group-item list-group-item-action mb-2 p-4 border rounded shadow-sm">
+                    <h5>Blog 1</h5>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </a>
+                <!-- Blog 2 -->
+                <a href="#" class="list-group-item list-group-item-action mb-2 p-4 border rounded shadow-sm">
+                    <h5>Blog 2</h5>
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </a>
+                <!-- Blog 3 -->
+                <a href="#" class="list-group-item list-group-item-action mb-2 p-4 border rounded shadow-sm">
+                    <h5>Blog 3</h5>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                </a>
+                <!-- Blog 4 -->
+                <a href="#" class="list-group-item list-group-item-action mb-2 p-4 border rounded shadow-sm">
+                    <h5>Blog 4</h5>
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap CDN -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+<script>
+    function goBackClick() {
+        window.location = 'index.html'
+    }
+</script>
+
+</html>
