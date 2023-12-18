@@ -32,6 +32,7 @@ def add_blogpost():
     """
     title = request.form["title"]
     main_body = request.form["main_body"]
+    
 
     dup = 0
     static_title = title
@@ -42,6 +43,7 @@ def add_blogpost():
     doc = {
         "title": title,
         "main_body": main_body,
+        "user":
     }
     blogs.insert_one(doc)
     return render_template("add_blogpost.html", message="Added Successfully")
