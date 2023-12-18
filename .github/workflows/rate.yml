@@ -1,0 +1,18 @@
+name: rate Workflow
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run a script that needs the GitHub Token
+      run: |
+        cd web-app
+        python github_api.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
