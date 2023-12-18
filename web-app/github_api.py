@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 import requests
 from datetime import datetime, timezone, timedelta
 import random

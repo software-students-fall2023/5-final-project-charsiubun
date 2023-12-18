@@ -9,6 +9,7 @@ datetime = "*"
 mongomock = "*"
 flask = "*"
 pymongo = "*"
+python-dotenv = "*"
 
 [dev-packages]
 pytest = "*"
