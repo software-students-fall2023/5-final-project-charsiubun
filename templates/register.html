@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Register</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
     <style>
         .error {
             color: red;
@@ -9,17 +10,38 @@
     </style>
 </head>
 <body>
-    <h2>Register</h2>
-    <form action="/register" method="post">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br><br>
-        <span class="error">Github username not existed/already registered</span><br>
-        <span class="success">You have successfully registered. <a href="/login">Return to login page</a></span><br><br>
-        <input type="submit" value="Register">
-    </form>
-    <br>
-    <a href="/login">Return to login page</a>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Register</h2>
+                    <form action="/register" method="post">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                        <div class="form-group">
+                            <span class="error">Github username not existed/already registered</span>
+                            <span class="success">You have successfully registered. <a href="/login">Return to login page</a></span>
+
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                    <div class="mt-3">
+                        <a href="/login">Return to login page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/bootstrap.min.js"></script>
 </body>
 </html>
