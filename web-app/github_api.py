@@ -1,10 +1,12 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 import requests
 from datetime import datetime, timezone, timedelta
 import random
 import os
 
 def get_github_user_year_contributions(username, github_token):
-    # Define the GraphQL query
     graphql_query = """
     query ContributionsView($username: String!, $from: DateTime!, $to: DateTime!) {
         user(login: $username) {
@@ -45,7 +47,7 @@ def get_github_user_year_contributions(username, github_token):
 def get_user_contributed_repos(username, github_token):
     headers = {
         'Authorization': f'token {github_token}',
-        'Accept': 'application/vnd.github.cloak-preview'  # Required for commit search
+        'Accept': 'application/vnd.github.cloak-preview' 
     }
 
     # Define the date range (last year)
@@ -66,7 +68,6 @@ def get_user_contributed_repos(username, github_token):
         for item in search_results['items']:
             repo_name = item['repository']['full_name']
             if repo_name not in repos_info:
-                # Fetch languages for this repository
                 languages_url = f'https://api.github.com/repos/{repo_name}/languages'
                 lang_response = requests.get(languages_url, headers=headers)
                 if lang_response.status_code == 200:
@@ -180,14 +181,6 @@ def calculate_rating(data):
     + (W4 * total_repo_count) + (W6 * total_forks)
     + (W9 * total_lines_contributed)
 
-    # Print weighted values for debugging
-    #print(f"Weighted Language Count: {W1 * len(languages)}")
-    #print(f"Weighted Total Contributions: {W2 * total_contributions}")
-    #print(f"Weighted PR Activities: {W3 * total_pr_activities}")
-    #print(f"Weighted Repository Count: {W4 * total_repo_count}")
-    #print(f"Weighted Forks: {W6 * total_forks}")
-    #print(f"Weighted Lines Contributed: {W9 * total_lines_contributed}")
-
     max_languages = 10
     max_commit_contributions = 450
     max_pr_activities = 100
@@ -200,20 +193,8 @@ def calculate_rating(data):
     + (W4 * max_repo_count) + (W6 * max_forks)
     + (W9 * max_lines_contributed)
 
-    # Print max values for debugging
-    #print(f"Max Language: {W1 * max_languages}")
-    #print(f"Max Total Contributions: {W2 * max_commit_contributions}")
-    #print(f"Max PR Activities: {W3 * max_pr_activities}")
-    #print(f"Max Repository Count: {W4 * max_repo_count}")
-    #print(f"Max Forks: {W6 * max_forks}")
-    #print(f"Max Lines Contributed: {W9 * max_lines_contributed}")
-
-    # Normalize the rating to a 0-100 scale
     normalized_rating = round(((raw_rating / max_rating) * 40) + 60, 2)
 
-    #print(f"Raw Rating: {raw_rating}")
-    #print(f"Max Rating: {max_rating}")
-    #print(f"Normalized Rating: {normalized_rating}")
 
     return normalized_rating
 
@@ -342,12 +323,7 @@ def get_feedback(username, score):
         return random.choice(low_score_compliments)
 
 
-#TEST_USERNAME = "PatrickZhao0"
-#TEST_USERNAME = "BREADLuVER"
-#TEST_USERNAME = "Spectraorder"
-u_names = ["PatrickZhao0", "BREADLuVER", "Spectraorder", "ni2050", "Yucheng-XPH", "RichardFuuu", "AlexXiang604", "YimengDuan2002",
-            "DarrenLe20", "hillarydavis1", "paulasera", "Leo6016", "shl622", "sarah-altowaity1", "rachel0lehcar", "danilo-montes"]
-#u_names = ["PatrickZhao0", "BREADLuVER", "Spectraorder", "ni2050"]
+u_names = ["PatrickZhao0", "BREADLuVER", "Spectraorder", "ni2050"]
 
 
 for n in u_names:
