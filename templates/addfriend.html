@@ -12,7 +12,7 @@
     <!-- Header section -->
     <div class="row py-3">
         <div class="col-6">
-            <button class="btn btn-secondary" onclick="goBackClick()">
+            <button class="btn btn-secondary">
                 &lt;
             </button>
         </div>
@@ -25,13 +25,13 @@
         <div class="col-12 text-center">
             <h2>Add a Friend!</h2>
             <!-- Form -->
-            <form action="#">
+            <form method="post">
                 <!-- ID Input -->
                 <div class='mb-3'>
                     <div class="text-left">
                         <label for='id' class='form-label'>ID:</label>
                     </div>
-                    <input type='text' id='id' name='id' placeholder='ID:' class='form-control'>
+                    <input type='text' name='id' placeholder='ID:' class='form-control'>
                 </div>
                 <!-- Add Button -->
                 <div class="text-right">
@@ -45,10 +45,5 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-<script>
-    function goBackClick() {
-        window.location = 'index.html'
-    }
-</script>
 
 </html>
