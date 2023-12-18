@@ -18,12 +18,12 @@
     <!-- Header section -->
     <div class="row py-3">
         <div class="col-6">
-            <button class="btn btn-secondary" onclick="goBackClick()">
+            <a class="btn btn-secondary" href="">
                 &lt;
-            </button>
+            </a>
         </div>
         <div class="col-6 text-right">
-            <button class="btn btn-secondary" onclick="addFriendClick()">+</button>
+            <a class="btn btn-secondary" href="">+</a>
         </div>
     </div>
     <!-- Profile section -->
@@ -49,21 +49,16 @@
     <!-- Footer section -->
     <div class="row">
         <div class="col-12 text-center">
-<!--            <div class="btn-group">-->
-<!--                <button class="btn btn-info">My Blog</button>-->
-<!--                <button class="btn btn-info">Friends' Blog</button>-->
-<!--                <button class="btn btn-info">Find out GitHub Rating!</button>-->
-<!--            </div>-->
             <div class="btn-group">
                 <div class="row">
                     <div class="col-4">
-                        <button class="btn btn-info" onclick="myBlogPage()">My Blog</button>
+                       <a href=""><button class="btn btn-info">My Blog</button></a> 
                     </div>
                     <div class="col-4">
-                        <button class="btn btn-info" onclick="friendBlogPage()">Friends' Blog</button>
+                        <a href=""><button class="btn btn-info">Friends' Blog</button></a>
                     </div>
                     <div class="col-4">
-                        <button class="btn btn-info" onclick="checkoutPage()">Find out GitHub Rating!</button>
+                        <a href=""><button class="btn btn-info">Find out GitHub Rating!</button></a>
                     </div>
                 </div>
             </div>
@@ -74,26 +69,4 @@
 <script src="/static/jquery-3.5.1.slim.min.js"></script>
 <script src="/static/bootstrap.min.js"></script>
 </body>
-<script>
-    function myBlogPage() {
-        window.location = 'myblog.html'
-    }
-
-    function friendBlogPage() {
-        window.location = 'friendblog.html'
-    }
-
-    function checkoutPage() {
-        window.location = 'checkout.html'
-    }
-
-    function goBackClick() {
-        window.location = 'login.html'
-    }
-
-    function addFriendClick() {
-        window.location = 'addfriend.html'
-    }
-
-</script>
 </html>

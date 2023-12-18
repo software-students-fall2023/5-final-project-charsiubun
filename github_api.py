@@ -139,7 +139,7 @@ def get_github_user_details(username, github_token):
 
         return cleaned_data
     else:
-        return {"error": "User not found"}
+        return None
 
 
 # Replace with your GitHub token
@@ -201,8 +201,6 @@ def calculate_rating(data):
 
 def get_feedback(username, score):
     high_score_roasts = [
-        "🤓",
-        "🤓",
         f"{username}'s GitHub is so dense, even black holes are taking notes.",
         f"If there was a 'commit-ment' award, {username} would be a lifetime achiever.",
         f"Hey {username}, ever thought of 'branching' out to a social life?",
