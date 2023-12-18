@@ -1,17 +1,17 @@
 
 import os
-# import mongomock
+import mongomock
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo.mongo_client import MongoClient
 
 
 app = Flask(__name__)
 
-# if os.getenv("TESTING"):
-#     app.config["MONGO_CONN"] = mongomock.MongoClient()
-# else:
-URI = "mongodb://mongodb:27017/"
-app.config["MONGO_CONN"] = MongoClient(URI)
+if os.getenv("TESTING"):
+    app.config["MONGO_CONN"] = mongomock.MongoClient()
+else:
+    URI = "mongodb://mongodb:27017/"
+    app.config["MONGO_CONN"] = MongoClient(URI)
 
 connection = app.config["MONGO_CONN"]
 db = connection["blog_app"]
