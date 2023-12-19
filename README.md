@@ -41,28 +41,50 @@ docker-compose up
 ## User-guide
 
 ### Logging In
-- When starting, you will be prompted to login/create an account
+- When starting, you will be prompted to login/create an account.
+- Please note it may take a while to process this request, so be patient.
 
 ### Main Screen
 - The main screen serves as the dashboard and starting point.
-- You will be able to see your profile name, along with the "Joke of the Day", which is done by a joke generator, and is based of your user profile
-- From here, you can navigate to 3 different functionalities: Your Blog, Friends' Blogs, Checking your GitHub "rating".
+- You will be able to see your profile name, along with the "Joke of the Day", which is done by a joke generator, and is based of your user profile.
+- From here, you can navigate to 5 different functionalities: Your Blog, Friends' Blogs, All Blogs Checking your GitHub "rating", and adding a friend.
+
+### Viewing Your Blogpsts
+- Navigate to the “Your Blog” section from the main menu.
+- Everyone of your brilliant posts will be organized for you to go over!
 
 ### Publishing a Blogpost
-- Navigate to the “Add Notes” section from the main menu.
-- You can capture an image using your device's camera, which will be interpreted by our ML function.
-- You will then be redirected to a new page where the interpreted note title and body will be shown.
-- Click add note if they're satisfactory. If successful, a success message will show.
-- The extracted notes will be stored and can be accessed in all notes, search note.
+- Navigate to the “Your Blog” section from the main menu.
+- You will then be redirected to a new page where all of your publishd blogposts will show up.
+- Click add blogpost, and you will be prompted to enter a new blog entry.
+- The new blogpost will be published and will be viewable to all your friends!
 
-### All Notes
-- Access all your saved notes through the “View Notes” section.
-- Each note can be edited or deleted.
+### Deleting a Blogpost
+- Navigate to the “Your Blog” section from the main menu.
+- You will then be redirected to a new page where all of your publishd blogposts will show up.
+- Click on the desired blogpost, and then delete.
+- Deleting will automatically remove the blogpost permanently.
 
-### Search Notes (case sensitive)
-- Use the search functionality to quickly find specific notes.
-- Enter part of the note's title or the full title in the search bar to filter out notes.
-- Case sensitive
+### Adding Friends
+- Click on the "+" in the upper right corner of the home page.
+- You will be prompted to enter a user you want to add as a friend.
+- Feel free to add us as friends. Add PatrickZhao0 and Yucheng-XPH if you want to see some of the first posts ever!
+
+### Viewing Friends' Blogposts
+- Navigate to the "Friends' Blogs" section from the main menu.
+- You will be redirected to a new page that shows all your friends' insightful blogposts.
+
+### Viewing all Blogposts
+- Navigate to the "All Blogs" section from the main menu
+- All notifications regarding friends joining, yours as well as their blogs will all show up here. Blogs from users that are not added as your friend are also found here.
+
+### Checking GitHub User Ratings
+- Navigate to "Find out Github Users" from the homepage.
+- You will be prompted to enter a GitHub username.
+- The app will fetch data from that GitHub user, analyze it and rate it based on yearly contributions, number of repositories, among other criteria, and then generate a joke based on the information it gathers.
+
+
+
 
 ## Team Members
 
