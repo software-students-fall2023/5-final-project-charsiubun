@@ -2,7 +2,6 @@
 
 ## Badges
 ![Python build & test](https://github.com/software-students-fall2023/5-final-project-charsiubun/actions/workflows/webapp.yml/badge.svg) 
-\
 
 
 A web app to post/blog that is targeted to developers and is tied to GitHub. Users can share to their friends any news, updates, or projects they're working on. The web-app also provides useful stats regarding users' GitHub activity, and generates personalized jokes for users based on their GitHub account.
