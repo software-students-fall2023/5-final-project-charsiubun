@@ -71,7 +71,7 @@ https://hub.docker.com/r/bailongzhao/github_blog/tags
 ### Adding Friends
 - Click on the "+" in the upper right corner of the home page.
 - You will be prompted to enter a user you want to add as a friend.
-- Feel free to add us as friends. Add PatrickZhao0 and Yucheng-XPH if you want to see some of the first posts ever!
+- Feel free to add us as friends. Add PatrickZhao0, BREADLuVER, and Yucheng-XPH if you want to see some of the first posts ever!
 
 ### Viewing Friends' Blogposts
 - Navigate to the "Friends' Blogs" section from the main menu.
