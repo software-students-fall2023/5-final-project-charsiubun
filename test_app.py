@@ -38,7 +38,7 @@ def test_show_register(client):
 def test_show_allblogs(client):
     response = client.get("/allblogs/Patrick")
     assert response.status_code == 200
-    assert b"<title>All Blog</title>" in response.data
+    assert b"<title>All Blogs</title>" in response.data
 
 def test_show_addfriend(client):
     response = client.get("/addfriend/Patrick")
