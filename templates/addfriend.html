@@ -6,9 +6,11 @@
     <title>Add a Friend</title>
     <!-- Bootstrap local static  -->
     <link rel="stylesheet" href="/static/bootstrap.min.css">
-    .error {
+     <style>
+        .error{
             color: red;
         }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -19,9 +21,9 @@
                 &lt;
             </button>
         </div>
-        <div class="col-6 text-right">
+        <!--<div class="col-6 text-right">
             <button class="btn btn-secondary">+</button>
-        </div>
+        </div> -->
     </div>
     <!-- Profile section -->
     <div class="row">
@@ -32,19 +34,20 @@
                 <!-- ID Input -->
                 <div class='mb-3'>
                     <div class="text-left">
-                        <label for='id' class='form-label'>ID:</label>
+                        <label for='username' class='form-label'>Username:</label>
                     </div>
-                    <input type='text' name='id' placeholder='ID:' class='form-control'>
+                    <input type='text' name='username' placeholder='Username:' class='form-control'>
                 </div>
                 <!-- Add Button -->
                 <div class="text-right">
                     <button type='submit' class='btn btn-primary'>ADD</button>
                 </div>
+                 <span class="error">your friend haven't registered</span>
+                 <span class="error">successfully added！</span>
             </form>
         </div>
     </div>
 </div>
- <span class="error">your friend haven't registered</span><br>
 <!-- Bootstrap local static -->
 <script src="/static/jquery-3.5.1.slim.min.js"></script>
 <script src="/static/bootstrap.min.js"></script>

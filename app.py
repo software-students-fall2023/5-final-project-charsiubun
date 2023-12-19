@@ -81,7 +81,6 @@ def post_blog(username):
     owner = username
     title = request.form["title"]
     main_body = request.form["main_body"]
-    
 
     doc = {
         "owner": owner,
