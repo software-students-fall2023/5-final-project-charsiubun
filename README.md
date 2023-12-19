@@ -40,7 +40,9 @@ link
 ## User-guide (Use Digital Ocean's Link)
 
 ### Logging In
-- When starting, you will be prompted to login/create an account.
+- When starting, you will be prompted to login/register an account.
+- If you don't have an account, click on register, which will take you to a new screen to set up your username and password.
+- **Please Note** that your username **MUST** be the same as your GitHub account username
 - Please note it may take a while to process this request, so be patient.
 - Note your password will be hashed and safely stored in a database.
 
