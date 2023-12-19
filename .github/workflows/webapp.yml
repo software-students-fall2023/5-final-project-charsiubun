@@ -56,6 +56,7 @@ jobs:
         DROPLET_IP: 134.209.33.233
         DROPLET_USERNAME: root
         DROPLET_PASSWORD: ${{secrets.DROPLET_PASSWORD }}
+        TOKEN: ${{ secrets.TOKEN }}
       run: |
         sshpass -p "${DROPLET_PASSWORD}" rsync -avz -e "ssh -o StrictHostKeyChecking=no" ./ "${DROPLET_USERNAME}@${DROPLET_IP}:/root"
 
@@ -73,6 +74,7 @@ jobs:
         DROPLET_IP: 134.209.33.233
         DROPLET_USERNAME: root
         DROPLET_PASSWORD: ${{ secrets.DROPLET_PASSWORD }}
+        TOKEN: ${{ secrets.TOKEN }}
       run: |
         sshpass -p "${DROPLET_PASSWORD}" ssh -o StrictHostKeyChecking=no "${DROPLET_USERNAME}@${DROPLET_IP}" "
           docker-compose down &&
