@@ -43,6 +43,7 @@ docker-compose up
 ### Logging In
 - When starting, you will be prompted to login/create an account.
 - Please note it may take a while to process this request, so be patient.
+- Note your password will be hashed and safely stored in a database.
 
 ### Main Screen
 - The main screen serves as the dashboard and starting point.
