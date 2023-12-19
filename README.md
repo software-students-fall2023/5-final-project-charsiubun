@@ -5,7 +5,7 @@
 
 A web app to post/blog that is targeted to developers and is tied to GitHub. Users can share to their friends any news, updates, or projects they're working on. The web-app also provides useful stats regarding users' GitHub activity, and generates personalized jokes for users based on their GitHub account.
 
-##This is the Figma link for the project Blog App
+## This is the Figma link for the project Blog App
 https://www.figma.com/file/WoGAi1nOVTMWqwCrJaPn3y/Blog-APP?type=design&mode=design&t=2vILJdjZo6fXMX77-1
 
 
