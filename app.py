@@ -114,7 +114,6 @@ def show_allblogs(username):
     all_blogs = blogs.find({}).sort('time', DESCENDING)
     return render_template('allblogs.html', all_blogs = all_blogs, username = username)
 
-
 @app.route("/addfriend/<username>")
 def show_addfriend(username):
     return render_template("addfriend.html", username = username)
