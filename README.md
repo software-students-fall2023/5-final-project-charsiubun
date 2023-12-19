@@ -21,11 +21,15 @@ https://www.figma.com/file/WoGAi1nOVTMWqwCrJaPn3y/Blog-APP?type=design&mode=desi
 ```
 git clone https://github.com/software-students-fall2023/5-final-project-charsiubun.git
 ```
-### Step 2, Docker Compose:
+### Step 2, set up .env, get token from us
+### Step 3, Docker Compose:
 ```
-docker-compose up --build
+docker-compose build
 ```
-### Step 3, Access the web-app
+```
+docker-compose up
+```
+### Step 4, Access the web-app
 Now, you can access the web app via http://localhost:5001/
 ## Docker Hub
 https://hub.docker.com/r/bailongzhao/github_blog/tags
