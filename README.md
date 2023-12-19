@@ -30,7 +30,7 @@ Now, you can access http://localhost:5000/
 ## Docker Hub
 https://hub.docker.com/r/bailongzhao/github_blog/tags
 
-## User-guide
+## User-guide (Use Digital Ocean's Link)
 
 ### Logging In
 - When starting, you will be prompted to login/create an account.
