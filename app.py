@@ -87,7 +87,6 @@ def post_blog(username):
         "owner": owner,
         "title": title,
         "main_body": main_body,
-        "user":
     }
     blogs.insert_one(doc)
     return render_template("myblog.html", post = True)
