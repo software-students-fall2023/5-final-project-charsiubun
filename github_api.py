@@ -319,16 +319,3 @@ def get_feedback(username, score):
         return random.choice(medium_score_roasts)
     else:
         return random.choice(low_score_compliments)
-
-
-u_names = ["PatrickZhao0", "BREADLuVER", "Spectraorder", "ni2050"]
-
-
-for n in u_names:
-    print(n)
-    user_details = get_github_user_details(n, GITHUB_TOKEN)
-    ratings = calculate_rating(user_details)
-    feed_back = get_feedback(n, ratings)
-    print(f"GitHub User Rating: {ratings}")
-    print(feed_back)
-    print("")
