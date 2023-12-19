@@ -26,7 +26,7 @@ git clone https://github.com/software-students-fall2023/5-final-project-charsiub
 docker-compose up --build
 ```
 ### Step 3, Access the web-app
-Now, you can access http://localhost:5000/
+Now, you can access the web app via http://localhost:5001/
 ## Docker Hub
 https://hub.docker.com/r/bailongzhao/github_blog/tags
 
