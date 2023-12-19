@@ -29,17 +29,8 @@ docker-compose up --build
 ```
 ### Step 3, Access the web-app
 Now, you can access http://localhost:5000/
-### Docker Hub
-Alternatively, You can also pull the images from the docker hub
-```
-docker pull ***Link here***
-```
-Download the docker-compose file from here and run 
-
-```
-docker-compose up
-```
-
+## Docker Hub
+https://hub.docker.com/r/bailongzhao/github_blog/tags
 
 ## User-guide
 
