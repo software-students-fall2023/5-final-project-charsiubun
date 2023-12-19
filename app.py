@@ -14,7 +14,7 @@ app = Flask(__name__)
 if os.getenv("TESTING"):
     app.config["MONGO_CONN"] = mongomock.MongoClient()
 else:
-    URI = "mongodb+srv://admin:admin123@blog.mj6rk4x.mongodb.net/?retryWrites=true&w=majority"
+    URI = "mongodb://mongodb:27017/"
     app.config["MONGO_CONN"] = MongoClient(URI)
 
 connection = app.config["MONGO_CONN"]
@@ -125,7 +125,7 @@ def addfriend(username):
     if users.find_one({"username": friend}) is None:
         return render_template("addfriend.html", username = username, error = True)
     query = {"username": username, "friends": {"$in": [friend]}}
-    if users.find(query) is not None:
+    if users.find_one(query) is not None:
         return render_template("addfriend.html", username = username, exist = True)
     users.update_one({"username": username}, {"$push": {"friends": friend}})
     return render_template("addfriend.html", username = username, success = True)
@@ -137,12 +137,6 @@ def show_checkout(username):
 @app.route("/checkout/<username>", methods=["POST"])
 def checkout(username):
     account = request.form["username"]
-    return redirect(url_for("result", username = username, account = account))
-
-@app.route("/checkoutResult")
-def result():
-    username = request.args.get('username')
-    account = request.args.get('account')
     user_details = get_github_user_details(account, GITHUB_TOKEN)
     if user_details is None:
          return render_template("checkout.html", username  = username, error = True)
