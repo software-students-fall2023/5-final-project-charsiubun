@@ -53,7 +53,7 @@ jobs:
 
     - name: Copy files to the Droplet
       env:
-        DROPLET_IP: 161.35.177.108
+        DROPLET_IP: 104.236.198.88
         DROPLET_USERNAME: root
         DROPLET_PASSWORD: ${{secrets.DROPLET_PASSWORD }}
         TOKEN: ${{ secrets.TOKEN }}
@@ -62,7 +62,7 @@ jobs:
 
     - name: Set Environment Variables on the Droplet
       env:
-        DROPLET_IP: 161.35.177.108
+        DROPLET_IP: 104.236.198.88
         DROPLET_USERNAME: root
         DROPLET_PASSWORD: ${{ secrets.DROPLET_PASSWORD }}
         TOKEN: ${{ secrets.TOKEN}}
@@ -71,7 +71,7 @@ jobs:
 
     - name: Run Docker Compose on the Droplet
       env:
-        DROPLET_IP: 161.35.177.108
+        DROPLET_IP: 104.236.198.88
         DROPLET_USERNAME: root
         DROPLET_PASSWORD: ${{ secrets.DROPLET_PASSWORD }}
         TOKEN: ${{ secrets.TOKEN }}
