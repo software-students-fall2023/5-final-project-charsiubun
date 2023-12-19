@@ -7,7 +7,7 @@ from hashlib import sha256
 from github_api import *
 from datetime import datetime
 from bson import ObjectId
-GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
+GITHUB_TOKEN = "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"
 
 app = Flask(__name__)
 
