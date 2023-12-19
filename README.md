@@ -41,28 +41,50 @@ docker-compose up
 ## User-guide
 
 ### Logging In
-- When starting, you will be prompted to login/create an account
+- When starting, you will be prompted to login/create an account.
 
 ### Main Screen
 - The main screen serves as the dashboard and starting point.
-- You will be able to see your profile name, along with the "Joke of the Day", which is done by a joke generator, and is based of your user profile
+- You will be able to see your profile name, along with the "Joke of the Day", which is done by a joke generator, and is based of your user profile.
 - From here, you can navigate to 3 different functionalities: Your Blog, Friends' Blogs, Checking your GitHub "rating".
 
+### Viewing Your Blogpsts
+- Navigate to the “Your Blog” section from the main menu.
+- Everyone of your brilliant posts will be organized for you to go over!
+
 ### Publishing a Blogpost
-- Navigate to the “Add Notes” section from the main menu.
-- You can capture an image using your device's camera, which will be interpreted by our ML function.
-- You will then be redirected to a new page where the interpreted note title and body will be shown.
-- Click add note if they're satisfactory. If successful, a success message will show.
-- The extracted notes will be stored and can be accessed in all notes, search note.
+- Navigate to the “Your Blog” section from the main menu.
+- You will then be redirected to a new page where all of your publishd blogposts will show up.
+- Click add blogpost, and you will be prompted to enter a new blog entry.
+- The new blogpost will be published and will be viewable to all your friends!
 
-### All Notes
-- Access all your saved notes through the “View Notes” section.
-- Each note can be edited or deleted.
+### Editing or Deleting a Blogpost
+- Navigate to the “Your Blog” section from the main menu.
+- You will then be redirected to a new page where all of your publishd blogposts will show up.
+- Click on the desired blogpost.
+- Select the desired action (delete or edit).
+- Deleting will automatically remove the blogpost permanently.
+- Editing will redirect you to a new page, allowing you to change the contents of previous blogposts.
 
-### Search Notes (case sensitive)
-- Use the search functionality to quickly find specific notes.
-- Enter part of the note's title or the full title in the search bar to filter out notes.
-- Case sensitive
+
+### Search Blogposts (case sensitive)
+- Navigate to the “Your Blog” section from the main menu.
+- You will then be redirected to a new page where all of your publishd blogposts will show up.
+- Click on the Search option.
+- Enter part of the blogs's title or the full title in the search bar to filter out notes (case sensitive).
+- Results based on entered keywords will show up.
+
+### Adding Friends
+- Navigate to the "Friends' Blogs" section from the main menu.
+- You will be redirected to a new page that would be showing all your friends' blogposts.
+- You will be prompted to enter a user you want to add as a friend.
+
+### Viewing Friends' Blogposts
+- Navigate to the "Friends' Blogs" section from the main menu.
+- You will be redirected to a new page that shows all your friends' insightful blogposts.
+
+
+
 
 ## Team Members
 
