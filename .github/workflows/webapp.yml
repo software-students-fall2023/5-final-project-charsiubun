@@ -81,18 +81,3 @@ jobs:
           docker-compose build &&
           docker-compose up -d
         "
-    - name: Deploy to Digital Ocean
-      env:
-        SSH_HOST: ${{ secrets.SSH_HOST }}
-        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
-        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
-        DEPLOY_DIRECTORY: '/root/5-final-project-charsiubun'
-      run: |
-        mkdir -p ~/.ssh
-        ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
-        sshpass -p $SSH_PASSWORD ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST "
-        cd $DEPLOY_DIRECTORY && 
-        docker-compose down && 
-        git pull origin main && 
-        docker-compose build --no-cache && 
-        docker-compose up -d " || true
