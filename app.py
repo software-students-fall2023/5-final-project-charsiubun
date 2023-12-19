@@ -153,4 +153,4 @@ def delete_blogpost():
     return redirect(url_for("show_myblogs", username = username))
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5001)
