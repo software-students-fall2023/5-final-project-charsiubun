@@ -17,30 +17,35 @@
     <!-- Header section -->
     <div class="row py-3">
         <div class="col-6">
-            <button class="btn btn-secondary"  onclick="goBackClick()">
+            <a href="{{url_for('show_home', username = username)}}" class="btn btn-secondary">
                 &lt;
-            </button>
+            </a>
         </div>
     </div>
     <!-- Profile section -->
     <div class="row">
         <div class="col-12 text-center">
-            <h2>Checkout a Github User!</h2>
+            <h2>Checkout a Github User! 🔍</h2>
             <!-- Form -->
-            <form action="#">
+            <form method="post">
                 <!-- ID Input -->
                 <div class='mb-3'>
-                    <div class="text-left">
-                        <label for='username' class='form-label'>Username:</label>
-                    </div>
-                    <input type='text' name='username' placeholder='Username:' class='form-control'>
+                    <input style="margin-top: 20px;" type='text' name='username' placeholder='Username:' class='form-control' required>
                 </div>
                 <!-- Add Button -->
                 <div class="text-right">
                     <button type='submit' class='btn btn-primary'>Search</button>
                 </div>
-                <p id="red">error message "username not found，please check again"</p>
+                {% if error %}
+                <p id="red">username not found, please check again</p>
+                {% endif %}
             </form>
+            {% if result%}
+            <h4 class="mt-5">
+               {{joke}}
+            </h4>
+            <p>Rating: {{rating}}<p>
+            {% endif %}
         </div>
     </div>
 </div>

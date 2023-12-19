@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <!-- Bootstrap local static -->
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <style>
+        .grey{
+          color: #7d7373;
+            font-weight: bold;
+            }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Header section -->
+    <div class="row py-3">
+        <div class="col-6">
+            <a href="{{url_for('show_home', username = username)}}" class="btn btn-secondary" onclick="goBackClick()">
+                &lt;
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h2>My Blogs</h2>
+ <p>Anything interesting on mind？<p/>
+            <!-- Form to add a new blog -->
+            <form class="mb-4" method="post">
+                <div class="form-group">
+                    <label class="grey" for="title">Title</label>
+                    <input type="text" class="form-control" name="title" placeholder="Enter title" required>
+                </div>
+                <div class="form-group">
+                    <label class="grey" for="main_body">Body</label>
+                    <textarea class="form-control" name="main_body" rows="3" placeholder="Enter body" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Blog</button>
+            </form>
+
+            <!-- Blog items section -->
+            <div class="list-group">
+                {% for blog in myblogs %}
+                <a href="#" class="list-group-item list-group-item-action mb-2 p-4 border rounded shadow-sm">
+                    <h4>{{blog.title}}</h4><br>
+                    <p>{{blog.main_body}}</p>
+                    <form action="{{ url_for('delete_blogpost') }}" method="POST">
+                        <input type="hidden" name="id" value="{{ blog._id }}">
+                        <input type="hidden" name="owner" value="{{ blog.owner }}">
+                        <button type="submit" class="btn btn-danger btn-sm float-right">Delete</button>
+                    </form>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap local static -->
+<script src="/static/jquery-3.5.1.slim.min.js"></script>
+<script src="/static/bootstrap.min.js"></script>
+</body>
+</html>
