@@ -30,6 +30,9 @@ Now, you can access the web app via http://localhost:5001/
 ## Docker Hub
 https://hub.docker.com/r/bailongzhao/github_blog/tags
 
+## Digital Ocean
+link
+
 ## User-guide (Use Digital Ocean's Link)
 
 ### Logging In
