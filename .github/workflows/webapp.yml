@@ -34,6 +34,8 @@ jobs:
       with:
         images: ${{ secrets.DOCKERHUB_USER }}/github-blog  
     - name: Push Docker image
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
       run: |
         docker-compose build
         docker-compose up -d
