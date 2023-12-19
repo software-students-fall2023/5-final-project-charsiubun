@@ -3,6 +3,8 @@ version: "3.10"
 services:
   app:
     image: bailongzhao/github_blog:web-app
+    environment:
+      TOKEN: ${TOKEN}
     build:
       context: .
       dockerfile: Dockerfile.webapp
