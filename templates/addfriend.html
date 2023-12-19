@@ -17,13 +17,11 @@
     <!-- Header section -->
     <div class="row py-3">
         <div class="col-6">
-            <button class="btn btn-secondary">
+            <a href="{{url_for('show_home', username = username)}}" class="btn btn-secondary">
                 &lt;
-            </button>
+            </a>
         </div>
-        <!--<div class="col-6 text-right">
-            <button class="btn btn-secondary">+</button>
-        </div> -->
+
     </div>
     <!-- Profile section -->
     <div class="row">
@@ -33,17 +31,23 @@
             <form method="post">
                 <!-- ID Input -->
                 <div class='mb-3'>
-                    <div class="text-left">
-                        <label for='username' class='form-label'>Username:</label>
-                    </div>
-                    <input type='text' name='username' placeholder='Username:' class='form-control'>
+                    <input style="margin-top: 20px;" type='text' name='friend' placeholder='Username:' class='form-control'>
                 </div>
                 <!-- Add Button -->
                 <div class="text-right">
-                    <button type='submit' class='btn btn-primary'>ADD</button>
+                    <button type='submit' class='btn btn-primary'>Add</button>
                 </div>
-                 <span class="error">your friend haven't registered</span>
-                 <span class="error">successfully added！</span>
+                {%if error%}
+                 <span class="error">Your friend haven't registered</span>
+                {%endif%}
+
+                {%if exist%}
+                 <span class="error">Already Added</span>
+                {%endif%}
+
+                {%if success%}
+                 <span class="success">Successfully added!</span>
+                {%endif%}
             </form>
         </div>
     </div>

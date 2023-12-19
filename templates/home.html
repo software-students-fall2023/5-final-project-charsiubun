@@ -18,30 +18,28 @@
     <!-- Header section -->
     <div class="row py-3">
         <div class="col-6">
-            <a class="btn btn-secondary" href="">
-                &lt;
+            <a class="btn btn-secondary" href="{{url_for('show_login')}}">
+                logout
             </a>
         </div>
         <div class="col-6 text-right">
-            <a class="btn btn-secondary" href="">+</a>
+            <a class="btn btn-secondary" href="{{url_for('show_addfriend', username = username)}}">+</a>
         </div>
     </div>
     <!-- Profile section -->
     <div class="row">
         <div class="col-12 text-center">
-            <h2>Profile Name</h2>
-            <p>Introduce yourself!</p>
+            <h2>Welcome {{username}}!! 👋</h2>
+            <p>Github Rating: {{rating}}%</p>
         </div>
     </div>
     <!-- Joke section -->
     <div class="row my-4">
         <div class="col-12">
-            <h4>Joke of the Day</h4>
-            <p>(Since we have a joke generator, we can use the advantage of it to make the Blog more interesting)</p>
+            <h4>Joke of the Day 🤣</h4>
             <div class="card">
                 <div class="card-body">
-                    <p class="card-text">What do you call a fish wearing a bowtie? <br>
-                        Sofishticated.</p>
+                    <p class="card-text">{{joke}}</p>
                 </div>
             </div>
         </div>
@@ -51,14 +49,17 @@
         <div class="col-12 text-center">
             <div class="btn-group">
                 <div class="row">
-                    <div class="col-4">
-                       <a href=""><button class="btn btn-info">My Blog</button></a> 
+                    <div class="col-3">
+                       <a href="{{url_for('show_myblogs', username = username)}}"><button class="btn btn-info">My Blogs</button></a> 
                     </div>
-                    <div class="col-4">
-                        <a href=""><button class="btn btn-info">Friends' Blog</button></a>
+                    <div class="col-3">
+                        <a href="{{url_for('show_friendblogs', username = username)}}"><button class="btn btn-info">Friends' Blogs</button></a>
                     </div>
-                    <div class="col-4">
-                        <a href=""><button class="btn btn-info">Find out GitHub Rating!</button></a>
+                    <div class="col-3">
+                        <a href="{{url_for('show_allblogs', username = username)}}"><button class="btn btn-info">All Blogs</button></a>
+                    </div>
+                    <div class="col-3">
+                        <a href="{{url_for('show_checkout', username = username)}}"><button class="btn btn-info">Find out GitHub Users</button></a>
                     </div>
                 </div>
             </div>
