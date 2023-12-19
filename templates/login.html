@@ -20,24 +20,24 @@
                 <form action="/" method="post">
                     <!-- ID Input -->
                     <div class="mb-3">
-                        <label for="id" class="form-label">Username:</label>
-                        <input type="text"  name="username" class="form-control"/>
+                        <label for="username" class="form-label">Username:</label>
+                        <input type="text"  name="username" class="form-control" required/>
                     </div>
 
                     <!-- Passcode Input -->
                     <div class="mb-3">
-                        <label for="passcode" class="form-label">Passcode:</label>
-                        <input type="password" id="passcode" name="passcode" class="form-control"/>
+                        <label for="password" class="form-label">Passcode:</label>
+                        <input type="password" name="password" class="form-control" required/>
                     </div>
 
                     <!-- Error Message -->
                     {% if error %}
-                        <p class="text-danger">{{ error }}</p>
+                        <p class="text-danger">Username/Password Incorrect</p>
                     {% endif %}
 
                     <!-- Submit Buttons -->
                     <button type="submit" name="submit" value="login" class="btn btn-primary mb-2">Login</button>
-                    <a href="/register" class="btn btn-danger mb-2">Register</a>
+                    <a href="{{ url_for('show_register') }}" class="btn btn-danger mb-2">Register</a>
                 </form>
             </div>
         </div>

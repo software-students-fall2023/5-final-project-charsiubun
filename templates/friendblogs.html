@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friend Blog</title>
+    <!-- Bootstrap local static  -->
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <!-- Header section -->
+    <div class="row py-3">
+        <div class="col-6">
+            <a href="{{url_for('show_home', username = username)}}" class="btn btn-secondary">
+                &lt;
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h2>Friends' Blogs</h2>
+            <!-- Blog items section -->
+            <div class="list-group">
+                {%if quiet%}
+                <span>Your friends are quiet<span/>
+                {%endif%}
+                <!-- Blog 1 -->
+                {%for blog in friend_blogs%}
+                <a href="#" class="list-group-item list-group-item-action mb-2 p-4 border rounded shadow-sm">
+                    <h5>{{blog.title}}</h5>
+                    <p>Author: {{blog.owner}}</p>
+                    {{blog.main_body}}
+                </a>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap local static -->
+<script src="/static/jquery-3.5.1.slim.min.js"></script>
+<script src="/static/bootstrap.min.js"></script>
+</body>
+</html>
